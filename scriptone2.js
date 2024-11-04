@@ -14,4 +14,12 @@ function mapRenderLoris(accessToken, mapControlId, options) {
         zoom: 13,
         style: 'mapbox://styles/mapbox/standard'
     });
+
+    map.on('click', function (e) {
+        const coordinates = e.lngLat;
+
+        new mapboxgl.Marker()
+            .setLngLat(coordinates)
+            .addTo(map);
+    });
 }
