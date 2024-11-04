@@ -3,11 +3,6 @@ function mapRenderLoris(accessToken, mapControlId, options) {
         container: mapControlId,
         center: options.defaultView,
         zoom: 13,
-        style: 'mapbox://styles/mapbox/standard',
-        config: {
-            basemap: {
-                lightPreset: 'night'
-            }
-        }
+        style: 'mapbox://styles/mapbox/standard'
     });
 }
