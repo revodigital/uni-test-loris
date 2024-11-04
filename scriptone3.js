@@ -17,7 +17,7 @@ function mapRenderLoris(accessToken, mapControlId, options) {
 
     map.on('click', function (e) {
         const coordinates = e.lngLat;
-
+        console.log(e);
         new mapboxgl.Marker()
             .setLngLat(coordinates)
             .addTo(map);
