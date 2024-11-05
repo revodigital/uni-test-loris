@@ -1,3 +1,7 @@
+function setMarker(e) {
+    console.log(e);
+}
+
 function mapRenderLoris(accessToken, mapControlId, options) {
     const container = document.getElementById(mapControlId);
 
@@ -46,6 +50,8 @@ function mapRenderLoris(accessToken, mapControlId, options) {
                     new mapboxgl.Marker()
                         .setLngLat(coordinates)
                         .addTo(map);
+
+                    parent.setMarker(e);
                 });
             </script>
         </body>
