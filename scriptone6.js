@@ -1,11 +1,13 @@
-function setMarker(e) {
+function markerSetted(e) {
     console.log(e);
 }
+
+let iframeContainer;
 
 function mapRenderLoris(accessToken, mapControlId, options) {
     const container = document.getElementById(mapControlId);
 
-    const iframeContainer = document.createElement('iframe');
+    iframeContainer = document.createElement('iframe');
     iframeContainer.style.width = '100%';
     iframeContainer.style.height = '500px';
     iframeContainer.style.border = 'none';
@@ -35,27 +37,31 @@ function mapRenderLoris(accessToken, mapControlId, options) {
             <script>
                 mapboxgl.accessToken = '${accessToken}';
 
+                function setMarker(coordinates) {
+                    new mapboxgl.Marker()
+                        .setLngLat(coordinates)
+                        .addTo(map);
+                }
+
                 const map = new mapboxgl.Map({
                     container: 'map',
                     style: 'mapbox://styles/mapbox/standard',
                     center: [${options.defaultView[0]}, ${options.defaultView[1]}],
-                    zoom: 13
+                    zoom: 5
                 });
 
-                // Add marker on map click
                 map.on('click', function (e) {
-                    const coordinates = e.lngLat;
+                    setMarker(e.lngLat);
 
-                    // Create a new marker and add it to the map
-                    new mapboxgl.Marker()
-                        .setLngLat(coordinates)
-                        .addTo(map);
-
-                    parent.setMarker(e);
+                    parent.markerSetted(e);
                 });
             </script>
         </body>
         </html>
     `);
     iframeDoc.close();
+}
+
+window.setMarkerManually = function (coordinates) {
+    iframeContainer.contentWindow.setMarker(coordinates);
 }
