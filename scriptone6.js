@@ -27,7 +27,7 @@ function mapRenderLoris(accessToken, mapControlId, options) {
             <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
             <style>
                 body { margin: 0; padding: 0; }
-                #map { width: 100%; height: 100%; }
+                #map { width: 100%; height: 400px; }
             </style>
         </head>
         <body>
